@@ -40,3 +40,4 @@ public class LoginPage {
     public void checkSystemBlocked() {
         passwordField.shouldNotBe(visible);
     }
+}
