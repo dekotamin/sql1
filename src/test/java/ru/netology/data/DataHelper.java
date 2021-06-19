@@ -67,7 +67,7 @@ public class DataHelper {
         }
     }
 
-    public static VerificationCode getVerificationCode() {
+    public static VerificationCode getVerificationWrongCode() {
         return new VerificationCode("12345");
     }
 

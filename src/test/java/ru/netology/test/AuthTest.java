@@ -33,6 +33,7 @@ class AuthTest {
         loginPage.enterPassword(authInfo);
         val verificationPage= loginPage.confirmAuth();
         val verificationCode = DataHelper.getVerificationCodeFor();
+        verificationPage.validVerify(verificationCode);
         val dashboardPage = new DashboardPage();
 
     }
