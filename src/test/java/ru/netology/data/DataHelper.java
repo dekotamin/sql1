@@ -37,7 +37,7 @@ public class DataHelper {
         String code = "";
 
         try (
-                val conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "9mREsvXDs9Gk89Ef");
+                val conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass");
         ) {
             code = runner.query(conn, codeSQL, new ScalarHandler<>());
         } catch (SQLException throwables) {
@@ -45,11 +45,11 @@ public class DataHelper {
         }
         return new VerificationCode(code);}
 
-    public static void clearCodeAuth()  throws SQLException{
+    public static void clearCodeAuth()  throws SQLException {
         val codeSQL ="DELETE FROM auth_codes;";
         val runner =new QueryRunner();
         try (
-                val conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "9mREsvXDs9Gk89Ef");
+                val conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass");
         ) {
             runner.update(conn, codeSQL);
         }
@@ -60,14 +60,14 @@ public class DataHelper {
         val codeSQL2 ="DELETE FROM cards;";
         val runner =new QueryRunner();
         try (
-                val conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "9mREsvXDs9Gk89Ef");
+                val conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass");
         ) {
             runner.update(conn, codeSQL2);
             runner.update(conn, codeSQL);
         }
     }
 
-    public static VerificationCode getVerificationWrongCode() {
+    public static VerificationCode getVerificationCode() {
         return new VerificationCode("12345");
     }
 

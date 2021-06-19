@@ -6,6 +6,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.data.DataHelper;
 import ru.netology.page.LoginPage;
+import ru.netology.page.VerificationPage;
+import ru.netology.page.DashboardPage;
 
 import java.sql.SQLException;
 
@@ -29,9 +31,10 @@ class AuthTest {
         val authInfo = DataHelper.getAuthInfo();
         loginPage.enterLogin(authInfo);
         loginPage.enterPassword(authInfo);
-        val verificationPage = loginPage.confirmAuth();
+        val verificationPage= loginPage.confirmAuth();
         val verificationCode = DataHelper.getVerificationCodeFor();
-        verificationPage.validVerify(verificationCode);
+        val dashboardPage = new DashboardPage();
+
     }
 
     @Test
@@ -46,5 +49,6 @@ class AuthTest {
         loginPage.enterPassword(authInfo);
         loginPage.confirmNotAuth();
         loginPage.checkSystemBlocked();
+
     }
 }
